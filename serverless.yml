@@ -1,0 +1,32 @@
+service: beidaki-lambda-serverless-api
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - '**'
+    - '!node_modules/**'
+    - '!src/**'
+
+functions:
+  hello:
+    handler: src/index.hello
+    events:
+      - http:
+          path: hello
+          method: get
+          cors: true
+  error:
+    handler: src/index.error
+    events:
+      - http:
+          path: error
+          method: get
+          cors: true
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
