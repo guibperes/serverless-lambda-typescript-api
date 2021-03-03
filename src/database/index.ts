@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { ConnectionManager, ObjectType } from 'typeorm';
 
 import { Env } from '../env';
