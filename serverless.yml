@@ -3,6 +3,8 @@ service: beidaki-lambda-serverless-api
 provider:
   name: aws
   runtime: nodejs10.x
+  environment:
+    MONGODB_URL: 'mongodb://localhost:27017/serverless'
 
 package:
   excludeDevDependencies: true

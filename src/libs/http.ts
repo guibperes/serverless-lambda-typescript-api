@@ -21,7 +21,7 @@ const createResponse = ({
   result,
   headers,
   statusCode,
-  sendCORSHeaders = false,
+  sendCORSHeaders = true,
 }: HttpSuccessResponse) => ({
   statusCode,
   headers: sendCORSHeaders ? { ...corsHeaders, ...headers } : headers,
@@ -32,7 +32,7 @@ const send = ({
   result,
   headers,
   statusCode = 200,
-  sendCORSHeaders = false,
+  sendCORSHeaders = true,
 }: HttpSuccessResponse) =>
   createResponse({ statusCode, result, headers, sendCORSHeaders });
 
@@ -40,7 +40,7 @@ const sendError = ({
   message,
   headers,
   statusCode = 500,
-  sendCORSHeaders = false,
+  sendCORSHeaders = true,
 }: HttpErrorResponse) =>
   createResponse({
     statusCode,
