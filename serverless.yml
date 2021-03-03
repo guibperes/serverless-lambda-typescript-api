@@ -28,6 +28,13 @@ functions:
           path: error
           method: get
           cors: true
+  books:
+    handler: src/modules/book/handler.findAll
+    events:
+      - http:
+          path: books
+          method: get
+          cors: true
 
 plugins:
   - serverless-plugin-typescript
