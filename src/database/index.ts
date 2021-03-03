@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { ConnectionManager, ObjectType } from 'typeorm';
 
 import { Env } from '../env';
+import { logger } from '../libs';
 import { entities } from './entities';
 
 const manager = new ConnectionManager();
@@ -26,10 +27,10 @@ const connect = async () => {
     const connection = getConnection();
     await connection.connect();
 
-    console.log('Connected on database');
+    logger.info('Connected on database');
   } catch (error) {
-    console.log('Cannot connect on database');
-    console.log(error);
+    logger.error('Cannot connect on database');
+    logger.error(error);
   }
 };
 
@@ -38,10 +39,10 @@ const disconnect = async () => {
     const connection = getConnection();
     await connection.close();
 
-    console.log('Disconnected on database');
+    logger.info('Disconnected on database');
   } catch (error) {
-    console.log('Cannot disconnect on database');
-    console.log(error);
+    logger.error('Cannot disconnect on database');
+    logger.error(error);
   }
 };
 
